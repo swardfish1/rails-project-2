@@ -1,0 +1,13 @@
+{{#each recipes as |recipe|}}
+  {{log recipe}}
+
+  <h1> <small>Title: {{recipe.title}} Instructions: {{recipe.instructions}}</small></h1>
+  <button type="button" id="edit-r">Edit Recipe</button>
+  <button type="button" class="delete-button" data-id="{{recipe.id}}">Delete Recipe</button>
+  <form class="edit-recipe" data-id="{{recipe.id}}">
+    Title <input type="text" name="recipe[title]" placeholder="recipe title">
+    Instructions <input type="text" name="recipe[instructions]" placeholder="instructions">
+    <button type="submit">Save</button>
+  </form>
+
+{{/each}}

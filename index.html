@@ -12,6 +12,105 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
-    </body>
+      <div class="container">
+        <h1>A Website</h1>
+        <div class="header">
+          <button id="sign-up" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
+            Sign Up
+          </button>
+          <button id="sign-in" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
+            Sign In
+          </button>
+          <button id="change-password" type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#changePasswordModal">
+            Change Password
+          </button>
+          <button id="sign-out" class="btn btn-danger hidden">Sign Out</button>
+        </div>
+        <hr>
+        <div id="alert"></div>
+
+        <!--Sign Up Modal-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="signUpModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+
+                <h2 class="modal-title">Sign Up</h2>
+              </div>
+              <div class="modal-body">
+                <div id="errorSU"></div>
+                <form class="form" id="sign-up-form">
+                  Email: <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
+                  Password: <input type="password" name="credentials[password]" placeholder="Pick a password, any password." class="form-control">
+                  Confirm Password: <input name="credentials[password_confirmation]" type="password" placeholder="Make sure it matches!" class="form-control">
+                  <button type="submit" class="btn btn-primary btn-modal float-right">Sign In</button>
+                  <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
+                </form>
+                <br><br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Sign In Modal-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="signInModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title">Sign In</h2>
+              </div>
+              <div class="modal-body">
+                <div id="errorSI"></div>
+                <form class="form" id="sign-in-form">
+                  Email:
+                  <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
+                  Password:
+                  <input type="password" name="credentials[password]" placeholder="Pick a password, any password. As long as its your password" class="form-control">
+                  <button type="submit" class="btn btn-primary btn-modal float-right">Sign In</button>
+                  <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
+                </form>
+                <br><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Change Pword Modal-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="changePasswordModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title">Change Password</h2>
+              </div>
+              <div class="modal-body">
+                <div id="errorCP"></div>
+                <form class="form-inline" id="change-password-form">
+                  Old Password: <input type="password" name="passwords[old]" placeholder="Old Password" class="form-control">
+                  New Password: <input type="password" name="passwords[new]" placeholder="New Password" class="form-control">
+                  <button type="submit" class="btn btn-primary btn-modal float-right">Change Password</button>
+                  <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
+                </form>
+                <br><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+  <form id="add-recipe">
+    Title <input type="text" name="recipe[title]" placeholder="recipe title">
+    Instructions <input type="text" name="recipe[instructions]" placeholder="instructions">
+    <button type="submit">Create</button>
+  </form>
+  <button id="recipe-show">Show Recipes</button>
+  <div class="showRecipes" id="show-recipes"></div>
+  </body>
 </html>
