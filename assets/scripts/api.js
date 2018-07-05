@@ -61,7 +61,6 @@ const getRecipe = function () {
 }
 
 const changeRecipe = function (data) {
-  console.log('data is', data);
   return $.ajax({
     method: 'PATCH',
     url: url.apiUrl + 'recipes/' + $(event.target).data('id'),

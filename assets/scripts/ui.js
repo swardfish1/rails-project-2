@@ -125,7 +125,6 @@ const createRecipeError = function (error) {
 }
 
 const getRecipeSuccess = function (data) {
-  console.log(data)
   const showRecipeHtml = recipeList({ recipes: data.recipes })
   $('.showRecipes').html(showRecipeHtml)
 }
