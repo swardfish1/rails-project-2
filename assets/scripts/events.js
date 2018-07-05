@@ -55,6 +55,7 @@ const onGetRecipe = function (event) {
 }
 
 const onEditRecipe = function (event) {
+  debugger
   event.preventDefault()
   const data = getFormFields(event.target)
   api.changeRecipe(data)

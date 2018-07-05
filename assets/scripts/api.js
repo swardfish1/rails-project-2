@@ -72,8 +72,7 @@ const changeRecipe = function (data) {
   })
 }
 
-const deleteRecipe = function () {
-  debugger
+const deleteRecipe = function (data) {
   return $.ajax({
     method: 'DELETE',
     url: url.apiUrl + 'recipes/' + $(event.target).data('id'),

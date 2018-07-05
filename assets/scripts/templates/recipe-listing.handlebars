@@ -1,13 +1,12 @@
 {{#each recipes as |recipe|}}
   {{log recipe}}
-
-  <h1> <small>Title: {{recipe.title}} Instructions: {{recipe.instructions}}</small></h1>
-  <button type="button" id="edit-r">Edit Recipe</button>
-  <button type="button" class="delete-button" data-id="{{recipe.id}}">Delete Recipe</button>
-  <form class="edit-recipe" data-id="{{recipe.id}}">
-    Title <input type="text" name="recipe[title]" placeholder="recipe title">
-    Instructions <input type="text" name="recipe[instructions]" placeholder="instructions">
-    <button type="submit">Save</button>
-  </form>
-
+         <h3>{{recipe.title}}</h3>
+        <strong>Instructions:</strong><h5>{{recipe.instructions}}</h5>
+        <button type="button" class="delete-button btn btn-danger btn-sm" data-id="{{recipe.id}}">Delete Recipe</button>
+        <hr>
+        <form class="edit-recipe form-inline" data-id="{{recipe.id}}">
+          Title <input type="text" name="recipe[title]" placeholder="recipe title" class="form-control">
+          Instructions <input type="text" name="recipe[instructions]" placeholder="instructions" class="form-control">
+          <button type="submit" class="btn btn-primary btn-sm">Save</button>
+        </form>
 {{/each}}

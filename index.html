@@ -12,8 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <div class="container">
-        <h1>A Website</h1>
+        <h1>An Website</h1>
         <div class="header">
           <button id="sign-up" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
             Sign Up
@@ -105,12 +104,15 @@
             </div>
           </div>
         </div>
-  <form id="add-recipe">
-    Title <input type="text" name="recipe[title]" placeholder="recipe title">
-    Instructions <input type="text" name="recipe[instructions]" placeholder="instructions">
-    <button type="submit">Create</button>
-  </form>
-  <button id="recipe-show">Show Recipes</button>
-  <div class="showRecipes" id="show-recipes"></div>
+
+        <form id="add-recipe" class="form hidden">
+          Title <input type="text" name="recipe[title]" placeholder="recipe title" class="form-control">
+          Instructions <input type="text" name="recipe[instructions]" placeholder="instructions" class="form-control">
+          <button type="submit" class="btn btn-success">Create</button>
+        </form>
+        <button id="recipe-show" class="btn btn-default hidden">Show Recipes</button>
+
+        <div class="showRecipes" id="show-recipes"></div>
+      </div>
   </body>
 </html>

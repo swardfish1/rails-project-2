@@ -9,7 +9,7 @@ const signUpSuccess = function (signUpResponse) {
       Signed up! Sign in!
     </div>
     `)
-    $('#sign-up-form').trigger('reset')
+  $('#sign-up-form').trigger('reset')
   $('#signUpModal').modal('hide')
 }
 
@@ -37,7 +37,10 @@ const signInSuccess = function (response) {
 }
 
 const signedInState = function () {
-  $('#sign-out, #new-game, #change-password').removeClass('hidden')
+  $('#add-recipe').removeClass('hidden')
+  $('#recipe-show').removeClass('hidden')
+  $('#sign-out').removeClass('hidden')
+  $('#change-password').removeClass('hidden')
   $('#sign-up, #sign-in').addClass('hidden')
 }
 
@@ -73,7 +76,10 @@ const changePasswordError = function (error) {
 }
 
 const signedOutState = function () {
-  $('#change-password, #sign-out, #game-board, #footer, #new-game').addClass('hidden')
+  $('#add-recipe').addClass('hidden')
+  $('#recipe-show').addClass('hidden')
+  $('#sign-out').addClass('hidden')
+  $('#change-password').addClass('hidden')
   $('#sign-up, #sign-in').removeClass('hidden')
 }
 
@@ -84,6 +90,7 @@ const signOutSuccess = function (response) {
       Signed Out
     </div>
     `)
+  $('.showRecipes').html('')
   signedOutState()
 }
 
@@ -100,11 +107,10 @@ const createRecipeSuccess = function (signUpResponse) {
   $('#alert').html(`
     <div class= "alert alert-success alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
-      Book made
+      Recipe made.
     </div>
     `)
-  $('#add-recipe').trigger('reset')
-  $('#add-recipe-modal').modal('hide')
+  $('.showRecipes').html('')
 }
 
 const createRecipeError = function (error) {
@@ -117,15 +123,9 @@ const createRecipeError = function (error) {
 }
 
 const getRecipeSuccess = function (data) {
-  $('#alert').html(`
-    <div class= "alert alert-success alert-dismissable fade in">
-      <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
-      Recipe added.
-    </div>
-    `)
   console.log(data)
   const showRecipeHtml = recipeList({ recipes: data.recipes })
-  $('.showRecipes').append(showRecipeHtml)
+  $('.showRecipes').html(showRecipeHtml)
 }
 
 const getRecipeError = function (error) {
@@ -158,13 +158,14 @@ const editRecipeError = function (error) {
     `)
 }
 
-const deleteRecipeSuccess = function () {
+const deleteRecipeSuccess = function (data) {
   $('#alert').html(`
     <div class= "alert alert-danger alert-dismissable fade in">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Deleted
     </div>
     `)
+    $('.showRecipes').html('')
 }
 
 const deleteRecipeError = function (error) {
