@@ -111,6 +111,7 @@ const createRecipeSuccess = function (signUpResponse) {
     </div>
     `)
   $('.showRecipes').html('')
+  $('#add-recipe').trigger('reset')
 }
 
 const createRecipeError = function (error) {
@@ -120,6 +121,7 @@ const createRecipeError = function (error) {
       Could not make recipe.
     </div>
     `)
+  $('#add-recipe').trigger('reset')
 }
 
 const getRecipeSuccess = function (data) {
@@ -144,9 +146,9 @@ const editRecipeSuccess = function (data) {
       Recipe edited. Click 'Show Recipe' to view changes.
     </div>
     `)
-  console.log(data)
   const showRecipeHtml = recipeList({ recipes: data.recipes })
   $('.showRecipes').html(showRecipeHtml)
+  $('.edit-recipe').trigger('reset')
 }
 
 const editRecipeError = function (error) {
@@ -156,6 +158,7 @@ const editRecipeError = function (error) {
       Could not eidt recipe.
     </div>
     `)
+    $('.edit-recipe').trigger('reset')
 }
 
 const deleteRecipeSuccess = function (data) {
