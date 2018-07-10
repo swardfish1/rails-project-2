@@ -1,13 +1,23 @@
 {{#each recipes as |recipe|}}
   {{log recipe}}
-         <h3>{{recipe.title}}</h3>
-        <strong>Instructions:</strong><h5>{{recipe.instructions}}</h5>
+  <div class="card">
+    <div class="card-container">
+      <div class="card-body">
+        <h3>{{recipe.title}}</h3>
+        <h4>Instructions:</h4><h5>{{recipe.instructions}}</h5>
+        <button data-id="{{recipe.id}}" class="btn btn-primary btn-sm edit-button">Edit Recipe</button>
         <button type="button" class="delete-button btn btn-danger btn-sm" data-id="{{recipe.id}}">Delete Recipe</button>
+        <br><br>
+      </div>
+      <div data-id="edit{{recipe.id}}" class="edit-section section collapsed">
         <hr>
-        <form class="edit-recipe form-inline" data-id="{{recipe.id}}">
-          Title <input type="text" name="recipe[title]" placeholder="recipe title" class="form-control">
-          Instructions <input type="text" name="recipe[instructions]" placeholder="instructions" class="form-control">
-          <button type="submit" class="btn btn-primary btn-sm">Save</button>
+        <button data-id="{{recipe.id}}" type=button class="close no-edit">&times;</button>
+        <form class="edit-recipe form-inline" id="edit-recipe" data-id="{{recipe.id}}">
+          <strong>Title</strong> <input type="text" name="recipe[title]" placeholder="recipe title" class="form-control">
+          <strong>Instructions</strong> <textarea id="edit-inst" name="recipe[instructions]" form="edit-recipe" class="form-control" placeholder="Recipe Instructions"></textarea>
+          <button type="submit" class="btn btn-primary btn-sm card-button">Save</button>
         </form>
-        <hr>
+      </div>
+    </div>
+  </div>
 {{/each}}

@@ -1,6 +1,5 @@
 'use strict'
 const authEvents = require('./events')
-const ui = require('./ui')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -16,4 +15,13 @@ $(() => {
   $('#recipe-show').on('click', authEvents.onGetRecipe)
   $('.showRecipes').on('click', '.delete-button', authEvents.onDeleteRecipe)
   $('.showRecipes').on('submit', '.edit-recipe', authEvents.onEditRecipe)
+  //show/hide edit
+  $('.showRecipes').on('click', '.edit-button', function () {
+    let id = $(this).attr('data-id')
+    $('[data-id="edit' + id + '"]').removeClass('collapsed')
+  })
+  $('.showRecipes').on('click', '.no-edit', function () {
+    let id = $(this).attr('data-id')
+    $('[data-id=edit' + id + ']').addClass('collapsed')
+  })
 })

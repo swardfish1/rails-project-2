@@ -1,10 +1,10 @@
 'use strict'
-const store = require('./store')
-const recipeList = require ('./templates/recipe-listing.handlebars')
+const recipeList = require('./templates/recipe-listing.handlebars')
+const api = require('./api')
 
 const signUpSuccess = function (signUpResponse) {
   $('#alert').html(`
-    <div class= "alert alert-success alert-dismissable">
+    <div class= "alert fade alert-success alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Signed up! Sign in!
     </div>
@@ -15,7 +15,7 @@ const signUpSuccess = function (signUpResponse) {
 
 const signUpError = function (error) {
   $('#errorSU').html(`
-    <div class= "alert alert-danger alert-dismissable fade in">
+    <div class= "alert alert-danger alert-dismissable fade-in">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Error signing up. Please check fields for errors. #{error}
     </div>
@@ -30,18 +30,20 @@ const signInSuccess = function (response) {
       You Signed In!
     </div>
     `)
-    $("#show-recipes").html()
+  $("#show-recipes").html()
   $('#sign-in-form').trigger('reset')
   $('#signInModal').modal('hide')
   signedInState()
 }
 
 const signedInState = function () {
-  $('#add-recipe').removeClass('hidden')
+  $('#add-recipe').removeClass('collapsed')
   $('#recipe-show').removeClass('hidden')
   $('#sign-out').removeClass('hidden')
   $('#change-password').removeClass('hidden')
   $('#sign-up, #sign-in').addClass('hidden')
+  $('#welcome-message').addClass('collapsed')
+  $('#welcome-message').addClass('hidden')
 }
 
 const signInError = function (error) {
@@ -81,11 +83,14 @@ const signedOutState = function () {
   $('#sign-out').addClass('hidden')
   $('#change-password').addClass('hidden')
   $('#sign-up, #sign-in').removeClass('hidden')
+  $('#welcome-message').removeClass('collapsed')
+  $('#welcome-message').removeClass('hidden')
+  $('#your-recipes-title').addClass('hidden')
 }
 
 const signOutSuccess = function (response) {
   $('#alert').html(`
-    <div class= "alert alert-warning alert-dismissable">
+    <div class= "alert fade alert-warning alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Signed Out
     </div>
@@ -96,7 +101,7 @@ const signOutSuccess = function (response) {
 
 const signOutFail = function (response) {
   $('#error').html(`
-    <div class= "alert alert-info alert-dismissable">
+    <div class= "alert fade alert-info alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Could not sign out.
     </div>
@@ -105,7 +110,7 @@ const signOutFail = function (response) {
 
 const createRecipeSuccess = function (signUpResponse) {
   $('#alert').html(`
-    <div class= "alert alert-success alert-dismissable">
+    <div class= "alert fade alert-success alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Recipe made.
     </div>
@@ -126,12 +131,13 @@ const createRecipeError = function (error) {
 
 const getRecipeSuccess = function (data) {
   const showRecipeHtml = recipeList({ recipes: data.recipes })
-  $('.showRecipes').html(showRecipeHtml)
+  $('.showRecipes').removeClass('collapsed').html(showRecipeHtml)
+  $('#your-recipes-title').removeClass('hidden')
 }
 
 const getRecipeError = function (error) {
   $('#alert').html(`
-    <div class= "alert alert-danger alert-dismissable fade in">
+    <div class= "alert fade alert-danger alert-dismissable fade in">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Could not make recipe.
     </div>
@@ -140,7 +146,7 @@ const getRecipeError = function (error) {
 
 const editRecipeSuccess = function (data) {
   $('#alert').html(`
-    <div class= "alert alert-success alert-dismissable fade in">
+    <div class= "alert fade alert-success alert-dismissable">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
       Recipe edited. Click 'Show Recipe' to view changes.
     </div>
@@ -160,7 +166,7 @@ const editRecipeError = function (error) {
     $('.edit-recipe').trigger('reset')
 }
 
-const deleteRecipeSuccess = function (data) {
+const deleteRecipeSuccess = function () {
   $('#alert').html(`
     <div class= "alert alert-danger alert-dismissable fade in">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
@@ -170,7 +176,7 @@ const deleteRecipeSuccess = function (data) {
     $('.showRecipes').html('')
 }
 
-const deleteRecipeError = function (error) {
+const deleteRecipeError = function () {
   $('#alert').html(`
     <div class= "alert alert-danger alert-dismissable fade in">
       <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>
