@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Example</title>
+    <title>Recipe Bok</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Do not add `link` tags-->
@@ -13,27 +13,24 @@
   </head>
   <body>
     <div class="container-fluid">
-      <h1>An Website</h1>
-      <div class="header">
-        <button id="sign-up" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
-          Sign Up
-        </button>
-
-        <button id="sign-in" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
-          Sign In
-        </button>
-
-        <button id="change-password" type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#changePasswordModal">
-          Change Password
-        </button>
-
-        <button id="sign-out" class="btn btn-danger hidden">Sign Out</button>
+      <div id="head" class="header hidden">
+        <img class="float-left" src="./public/img/recipe-book-icon.png" alt="Recipe Book Graphic" height="50px">
+        <button id="change-password" type="button" class="btn btn-primary hidden float-right" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
+        <button id="sign-out" class="btn btn-danger hidden float-right">Sign Out</button>
       </div>
-      <hr>
       <div id="alert"></div>
+      <br><br>
       <div class="welcome-card section" id="welcome-message">
-        <img src="./public/img/recipe-book.png" alt="Recipe Book Graphic" height="200px">
-        <h4>Welcome to the world's greatest online recipe book. Here You'll find a wide array of recipes, from the regular to the ridiculous. Create an account or log in and launch your kitchen into the 21st century! Feel free to add as many recipes as you want. Forget grandma's box of cards; join the cutting edge of future home tech!</h4>
+        <div class="welcome-body">
+          <img src="./public/img/recipe-book.png" alt="Recipe Book Graphic" height="120px">
+          <br>
+          <h2>A Recipe Book for the Ages</h2>
+          <br>
+          <h4>Welcome to the world's greatest online recipe book. Here You'll find a wide array of recipes, from the regular to the ridiculous. Create an account or log in and launch your kitchen into the 21st century! Feel free to add as many recipes as you want. Forget grandma's box of cards; join the cutting edge of future home tech!</h4>
+          <br>
+          <button id="sign-up" type="button" class="btn btn-default btn-lg btn-welcome" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
+          <button id="sign-in" type="button" class="btn btn-default btn-lg btn-welcome" data-toggle="modal" data-target="#signInModal">Sign In</button>
+        </div>
       </div>
 
       <!--Sign Up Modal-->
@@ -109,20 +106,22 @@
         </div>
       </div>
 
-      <form id="add-recipe" class="form section collapsed">
-        <h2>Create a Recipe</h2>
-        <h4>Title</h4>
-        <input type="text" name="recipe[title]" placeholder="Recipe Title" class="form-control">
-        <h4>Instructions</h4>
-        <textarea name="recipe[instructions]" form="add-recipe" class="form-control" id="inst-input" placeholder="Recipe Instructions"></textarea>
-        <button type="submit" class="btn btn-success">Create</button>
-      </form>
+      <div id="signed-in-body" class="section collapsed">
+        <div class="card card-container instructionsCard"><h2>Welcome</h2><h5>Happy cooking everyone. You can create a recipe with the below form. To view your recipes, click 'Show Recipes'. It's pretty self explanatory after that</h5></div>
+        <form id="add-recipe" class="form">
+          <h2>Create a Recipe</h2>
+          <h4>Title</h4>
+          <input type="text" name="recipe[title]" placeholder="Recipe Title" class="form-control">
+          <h4>Instructions</h4>
+          <textarea name="recipe[instructions]" form="add-recipe" class="form-control" id="inst-input" placeholder="Recipe Instructions"></textarea>
+          <button type="submit" class="btn btn-success">Create</button>
+        </form>
 
-      <button id="recipe-show" class="btn btn-default hidden">Show Recipes</button>
-      <hr>
-      <div id="your-recipes-title" class="hidden"><h1>Your Recipes</h1></div>
-      <div id="show-recipes" class="showRecipes cards-background"></div>
-      <hr>
+        <button id="recipe-show" class="btn btn-default hidden">Show Recipes</button>
+      </div>
+        <div id="your-recipes-title" class="hidden"><h1>Your Recipes</h1></div>
+        <div id="show-recipes" class="showRecipes cards-background"></div>
+        <hr>
       <div class="footer">Copyright &copy; 2018 Swardstrom Media. All rights reserved.</div>
     </div>
   </body>

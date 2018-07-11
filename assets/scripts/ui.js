@@ -37,13 +37,14 @@ const signInSuccess = function (response) {
 }
 
 const signedInState = function () {
-  $('#add-recipe').removeClass('collapsed')
+  $('#signed-in-body').removeClass('collapsed')
   $('#recipe-show').removeClass('hidden')
   $('#sign-out').removeClass('hidden')
   $('#change-password').removeClass('hidden')
   $('#sign-up, #sign-in').addClass('hidden')
   $('#welcome-message').addClass('collapsed')
   $('#welcome-message').addClass('hidden')
+  $('#head').removeClass('hidden')
 }
 
 const signInError = function (error) {
@@ -86,6 +87,7 @@ const signedOutState = function () {
   $('#welcome-message').removeClass('collapsed')
   $('#welcome-message').removeClass('hidden')
   $('#your-recipes-title').addClass('hidden')
+  $('#head').addClass('hidden')
 }
 
 const signOutSuccess = function (response) {
