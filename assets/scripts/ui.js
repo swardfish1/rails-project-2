@@ -47,6 +47,7 @@ const signedInState = function () {
   $('#welcome-message').addClass('hidden')
   $('#head').removeClass('hidden')
   $('.instructionsCard').removeClass('hidden')
+  $('#nav-break').removeClass('hidden')
 }
 
 const signedOutState = function () {
@@ -60,6 +61,7 @@ const signedOutState = function () {
   $('#your-recipes-title').addClass('hidden')
   $('#head').addClass('hidden')
   $('.instructionsCard').addClass('hidden')
+  $('#nav-break').addClass('hidden')
 }
 
 const hideRecipes = function () {

@@ -1,0 +1,25 @@
+/* Formatting Misc */
+.mt-3 {
+  margin-top: 3em;
+}
+
+.hidden {
+  display: none;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.block {
+  display: inline-block;
+}
+
+.clearfix {
+  overflow: hidden;
+  display: inline-block;
+}
