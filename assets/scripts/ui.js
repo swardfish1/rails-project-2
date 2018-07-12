@@ -39,12 +39,31 @@ const signInSuccess = function (response) {
 const signedInState = function () {
   $('#signed-in-body').removeClass('collapsed')
   $('#recipe-show').removeClass('hidden')
+  $('#recipe-hide').removeClass('hidden')
   $('#sign-out').removeClass('hidden')
   $('#change-password').removeClass('hidden')
   $('#sign-up, #sign-in').addClass('hidden')
   $('#welcome-message').addClass('collapsed')
   $('#welcome-message').addClass('hidden')
   $('#head').removeClass('hidden')
+  $('.instructionsCard').removeClass('hidden')
+}
+
+const signedOutState = function () {
+  $('#add-recipe').addClass('hidden')
+  $('#recipe-show').addClass('hidden')
+  $('#sign-out').addClass('hidden')
+  $('#change-password').addClass('hidden')
+  $('#sign-up, #sign-in').removeClass('hidden')
+  $('#welcome-message').removeClass('collapsed')
+  $('#welcome-message').removeClass('hidden')
+  $('#your-recipes-title').addClass('hidden')
+  $('#head').addClass('hidden')
+  $('.instructionsCard').addClass('hidden')
+}
+
+const hideRecipes = function () {
+  $('.showRecipes').html('')
 }
 
 const signInError = function (error) {
@@ -76,18 +95,6 @@ const changePasswordError = function (error) {
     </div>
     `)
   $('#change-password-form').trigger('reset')
-}
-
-const signedOutState = function () {
-  $('#add-recipe').addClass('hidden')
-  $('#recipe-show').addClass('hidden')
-  $('#sign-out').addClass('hidden')
-  $('#change-password').addClass('hidden')
-  $('#sign-up, #sign-in').removeClass('hidden')
-  $('#welcome-message').removeClass('collapsed')
-  $('#welcome-message').removeClass('hidden')
-  $('#your-recipes-title').addClass('hidden')
-  $('#head').addClass('hidden')
 }
 
 const signOutSuccess = function (response) {
@@ -203,5 +210,6 @@ module.exports = {
   getRecipeSuccess: getRecipeSuccess,
   getRecipeError: getRecipeError,
   deleteRecipeSuccess: deleteRecipeSuccess,
-  deleteRecipeError: deleteRecipeError
+  deleteRecipeError: deleteRecipeError,
+  hideRecipes: hideRecipes
 }
