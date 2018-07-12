@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe Bok</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Do not add `link` tags-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Do not add `script` tags-->
+    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="head" class="header hidden">
+        <div id="alert"></div>
+        <img class="float-left" src="./public/img/recipe-book-icon.png" alt="Recipe Book Graphic" height="50px">
+        <div class="clearfix"><h3>A Recipe Book for the Ages</h3></div>
+        <button id="sign-out" class="btn btn-danger hidden float-right">Sign Out</button>
+        <button id="change-password" type="button" class="btn btn-primary hidden float-right" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
+      </div>
+      <div id="nav-break" class="hidden"><br><br><br><br><br><br><br><br></div>
+      <div id="welcome-message" class="welcome-card section">
+        <div class="welcome-body">
+          <img src="./public/img/recipe-book.png" alt="Recipe Book Graphic" height="120px">
+          <br>
+          <h2>A Recipe Book for the Ages</h2>
+          <br>
+          <h4>Welcome to the world's greatest online recipe book. Here You'll find a wide array of recipes, from the regular to the ridiculous. Create an account or log in and launch your kitchen into the 21st century! Feel free to add as many recipes as you want. Forget grandma's box of cards; join the cutting edge of future home tech!</h4>
+          <br>
+          <button id="sign-up" type="button" class="btn btn-default btn-lg btn-welcome" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
+          <button id="sign-in" type="button" class="btn btn-default btn-lg btn-welcome" data-toggle="modal" data-target="#signInModal">Sign In</button>
+        </div>
+      </div>
+
+      <!--Sign Up Modal-->
+      <div id="signUpModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h2 class="modal-title">Sign Up</h2>
+            </div>
+            <div class="modal-body">
+              <div id="errorSU"></div>
+              <form class="form" id="sign-up-form">
+                Email: <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
+                Password: <input type="password" name="credentials[password]" placeholder="Pick a password, any password." class="form-control">
+                Confirm Password: <input name="credentials[password_confirmation]" type="password" placeholder="Make sure it matches!" class="form-control">
+                <button type="submit" class="btn btn-primary btn-modal float-right">Sign In</button>
+                <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
+              </form>
+              <br><br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Sign In Modal-->
+      <div id="signInModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h2 class="modal-title">Sign In</h2>
+            </div>
+            <div class="modal-body">
+              <div id="errorSI"></div>
+              <form class="form" id="sign-in-form">
+                Email:
+                <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
+                Password:
+                <input type="password" name="credentials[password]" placeholder="Pick a password, any password. As long as its your password" class="form-control">
+                <button type="submit" class="btn btn-primary btn-modal float-right">Sign In</button>
+                <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
+              </form>
+              <br><br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Change Pword Modal-->
+      <div id="changePasswordModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h2 class="modal-title">Change Password</h2>
+            </div>
+            <div class="modal-body">
+              <div id="errorCP"></div>
+              <form class="form-inline" id="change-password-form">
+                Old Password: <input type="password" name="passwords[old]" placeholder="Old Password" class="form-control">
+                New Password: <input type="password" name="passwords[new]" placeholder="New Password" class="form-control">
+                <button type="submit" class="btn btn-primary btn-modal float-right">Change Password</button>
+                <button type="button" class="btn btn-info btn-modal float-right" data-dismiss="modal">Cancel</button>
+              </form>
+              <br><br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="signed-in-body" class="section collapsed">
+        <div class="card-noCLick card-container instructionsCard hidden">
+          <h2>Welcome</h2>
+          <h5>Happy cooking everyone. You can create a recipe with the form below. To view your recipes, click 'Show Recipes'. Don't worry, ease of use is our number one priority!</h5>
+          <button id="recipe-show" class="btn btn-default btn-welcome hidden">Show Recipes</button>
+          <button id="recipe-hide" class="btn btn-default btn-welcome hidden">Hide Recipes</button>
+        </div>
+        <br>
+        <form id="add-recipe" class="form">
+          <h2>Create a Recipe</h2>
+          <h4>Title</h4>
+          <input type="text" name="recipe[title]" placeholder="Recipe Title" class="form-control">
+          <h4>Instructions</h4>
+          <textarea id="inst-input" name="recipe[instructions]" form="add-recipe" class="form-control" placeholder="Recipe Instructions"></textarea>
+          <button type="submit" class="btn btn-success float-right">Create</button>
+        </form>
+      </div>
+        <div id="your-recipes-title" class="hidden"><h1>Your Recipes</h1><br></div>
+        <div id="show-recipes" class="showRecipes cards-background"></div>
+        <hr>
+      <div class="footer">Copyright &copy; 2018 Swardstrom Media. All rights reserved.</div>
+    </div>
+  </body>
+</html>
