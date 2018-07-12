@@ -6,11 +6,12 @@ Wireframes (more to do later on that) https://photos.app.goo.gl/A7PG9pi6U5zS5XQD
 The concept of this project was pretty simple: create a site that made recipes. Had a few troubles along the way; things breaking, things fixed, html mysteriously disappearing for no reason, the likes. It was a cool challenge to figure out what was going on, especially with the html disappearing. In the end, I ha a grand plan that I had to shave way down in order to finish it in time. But hopefully for my bonus, I'll be able to fix it up, make it look way better, and add in some more cool features I wanted to add in.
 
 Backend is here: https://github.com/swardfish1/project-2-rails
+Deployed site is here: https://swardfish1.github.io/rails-project-2/
 
 No unsolved problems, but I definitely want to make it look better in future versions.
 
 User Stories:
-As a user, I want to be able to sign in so that I can view recipes 
+As a user, I want to be able to sign in so that I can view recipes
 As a chef, I want to create recipes so that my restaurant can grow and evolve
 As a chef, I want to edit recipes so that my restaurant can grow and evolve
 As a chef, I want a completed recipe to subtract amounts from stock so I can keep track of inventory more easily.
