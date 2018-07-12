@@ -1,5 +1,4 @@
 {{#each recipes as |recipe|}}
-  {{log recipe}}
   <div class="card">
     <div class="card-container">
       <div class="card-body">
@@ -12,9 +11,9 @@
       <div data-id="edit{{recipe.id}}" class="edit-section section collapsed">
         <hr>
         <button data-id="{{recipe.id}}" type=button class="close no-edit">&times;</button>
-        <form class="edit-recipe form-inline" id="edit-recipe" data-id="{{recipe.id}}">
+        <form class="edit-recipe form-inline" data-id="{{recipe.id}}">
           <strong>Title</strong> <input type="text" name="recipe[title]" placeholder="recipe title" class="form-control">
-          <strong>Instructions</strong> <textarea id="edit-inst" name="recipe[instructions]" form="edit-recipe" class="form-control" placeholder="Recipe Instructions"></textarea>
+          <strong>Instructions</strong> <textarea name="recipe[instructions]" form="edit-recipe" class="form-control" placeholder="Recipe Instructions"></textarea>
           <button type="submit" class="btn btn-primary btn-sm card-button">Save</button>
         </form>
       </div>

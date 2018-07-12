@@ -15,12 +15,13 @@
     <div class="container-fluid">
       <div id="head" class="header hidden">
         <img class="float-left" src="./public/img/recipe-book-icon.png" alt="Recipe Book Graphic" height="50px">
-        <button id="change-password" type="button" class="btn btn-primary hidden float-right" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
+        <div class="clearfix"><h3>A Recipe Book for the Ages</h3></div>
         <button id="sign-out" class="btn btn-danger hidden float-right">Sign Out</button>
+        <button id="change-password" type="button" class="btn btn-primary hidden float-right" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
       </div>
       <div id="alert"></div>
       <br><br>
-      <div class="welcome-card section" id="welcome-message">
+      <div id="welcome-message" class="welcome-card section">
         <div class="welcome-body">
           <img src="./public/img/recipe-book.png" alt="Recipe Book Graphic" height="120px">
           <br>
@@ -34,7 +35,7 @@
       </div>
 
       <!--Sign Up Modal-->
-      <div class="modal fade" tabindex="-1" role="dialog" id="signUpModal">
+      <div id="signUpModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -58,7 +59,7 @@
         </div>
       </div>
       <!--Sign In Modal-->
-      <div class="modal fade" tabindex="-1" role="dialog" id="signInModal">
+      <div id="signInModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -83,7 +84,7 @@
         </div>
       </div>
       <!--Change Pword Modal-->
-      <div class="modal fade" tabindex="-1" role="dialog" id="changePasswordModal">
+      <div id="changePasswordModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -107,19 +108,23 @@
       </div>
 
       <div id="signed-in-body" class="section collapsed">
-        <div class="card card-container instructionsCard"><h2>Welcome</h2><h5>Happy cooking everyone. You can create a recipe with the below form. To view your recipes, click 'Show Recipes'. It's pretty self explanatory after that</h5></div>
+        <div class="card-noCLick card-container instructionsCard hidden">
+          <h2>Welcome</h2>
+          <h5>Happy cooking everyone. You can create a recipe with the form below. To view your recipes, click 'Show Recipes'. Don't worry, ease of use is our number one priority!</h5>
+          <button id="recipe-show" class="btn btn-default btn-welcome hidden">Show Recipes</button>
+          <button id="recipe-hide" class="btn btn-default btn-welcome hidden">Hide Recipes</button>
+        </div>
+        <br>
         <form id="add-recipe" class="form">
           <h2>Create a Recipe</h2>
           <h4>Title</h4>
           <input type="text" name="recipe[title]" placeholder="Recipe Title" class="form-control">
           <h4>Instructions</h4>
-          <textarea name="recipe[instructions]" form="add-recipe" class="form-control" id="inst-input" placeholder="Recipe Instructions"></textarea>
-          <button type="submit" class="btn btn-success">Create</button>
+          <textarea id="inst-input" name="recipe[instructions]" form="add-recipe" class="form-control" placeholder="Recipe Instructions"></textarea>
+          <button type="submit" class="btn btn-success float-right">Create</button>
         </form>
-
-        <button id="recipe-show" class="btn btn-default hidden">Show Recipes</button>
       </div>
-        <div id="your-recipes-title" class="hidden"><h1>Your Recipes</h1></div>
+        <div id="your-recipes-title" class="hidden"><h1>Your Recipes</h1><br></div>
         <div id="show-recipes" class="showRecipes cards-background"></div>
         <hr>
       <div class="footer">Copyright &copy; 2018 Swardstrom Media. All rights reserved.</div>
